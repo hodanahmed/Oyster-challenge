@@ -13,8 +13,8 @@ end
 
 #Created a passing rspec test for User Story 3:I want a maximum limit (of £90) on my card.
 it 'raises an error if the maximum balance is exceeded' do
-    money = Oystercard::MAXIMUM_BALANCE
-    subject.top_up(money)
-    expect{ subject.top_up 1 }.to raise_error 'Maximum balance exceeded'
+    maximum_balance = Oystercard::MAXIMUM_BALANCE
+    subject.top_up maximum_balance
+    expect{ subject.top_up 1 }.to raise_error 'Maximum balance of #{maximum_balance} exceeded'
   end
 end
