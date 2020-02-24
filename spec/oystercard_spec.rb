@@ -17,4 +17,9 @@ it 'raises an error if the maximum balance is exceeded' do
     subject.top_up maximum_balance
     expect{ subject.top_up 1 }.to raise_error 'Maximum balance of #{maximum_balance} exceeded'
   end
+it 'can deduct money from current balance' do
+    subject.top_up(30)
+    subject.deduct(20)
+    expect(subject.balance).to eq(10)
+end
 end
