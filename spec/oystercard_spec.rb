@@ -31,7 +31,7 @@ describe Oystercard do
   it 'initially should not be in journey' do
     expect(subject).not_to be_in_journey
   end
-#Created a failing test for User Story 6: In order to get through the barriers. I need to touch out.
+#Created a passing test for User Story 6: In order to get through the barriers. I need to touch out.
   it 'can touch out' do
     subject.touch_in
     subject.touch_out
