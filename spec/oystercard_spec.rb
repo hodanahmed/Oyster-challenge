@@ -22,7 +22,7 @@ describe Oystercard do
       subject.top_up(20)
       expect{ subject.deduct 2}.to change{ subject.balance }.by -2
   end
-#Created a failing test for User Story 5: In order to get through the barriers. I need to touch in and out.
+#Created a passing test for User Story 5: In order to get through the barriers. I need to touch in.
   it 'can touch in' do
     subject.touch_in
     expect(subject.in_journey?).to eq(true)
@@ -31,11 +31,13 @@ describe Oystercard do
   it 'initially should not be in journey' do
     expect(subject).not_to be_in_journey
   end
-
+#Created a failing test for User Story 6: In order to get through the barriers. I need to touch out.
   it 'can touch out' do
+    subject.touch_in
+    subject.touch_out
+    expect(subject.in_journey?).to eq(false)
   end
 
   it 'can see if user is on a journey' do
   end
-
 end
