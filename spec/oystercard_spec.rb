@@ -25,7 +25,11 @@ describe Oystercard do
 #Created a failing test for User Story 5: In order to get through the barriers. I need to touch in and out.
   it 'can touch in' do
     subject.touch_in
-    expect{ subject.in_journey?}.to eq{true}
+    expect(subject.in_journey?).to eq(true)
+  end
+
+  it 'initially should not be in journey' do
+    expect(subject).not_to be_in_journey
   end
 
   it 'can touch out' do
