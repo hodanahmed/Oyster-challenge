@@ -1,9 +1,10 @@
 class Oystercard
 
   #We can access the balance by calling subject.balance
-  attr_accessor :balance, :in_journey, :maximum_balance
+  attr_accessor :balance, :in_journey, :maximum_balance, :MINIMUM_FARE
   MAXIMUM_BALANCE = 90
   MINIMUM_BALANCE = 1
+  MINIMUM_FARE = 1
   #When creating a oystercard instance, the balance will be 0.
   def initialize(balance = 0)
     @balance = balance
@@ -19,10 +20,6 @@ class Oystercard
     return
   end
 
-  def deduct(money)
-    @balance -= money
-  end
-
   def touch_in
     raise 'You need to top up your oyster!' if minimum
     @in_journey = true
@@ -30,6 +27,7 @@ class Oystercard
 
   def touch_out
     @in_journey = false
+    deduct
   end
 
   def in_journey?
@@ -46,7 +44,7 @@ class Oystercard
     @balance + @money > MAXIMUM_BALANCE
   end
 
-  def deduct(money)
+  def deduct(money = MINIMUM_FARE)
     @balance -= money
   end
 end

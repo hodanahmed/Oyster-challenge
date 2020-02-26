@@ -54,7 +54,7 @@ describe Oystercard do
       subject.touch_out
       expect(subject.in_journey?).to eq(false)
     end
-    # created a failing test for deducting money from touch out
+    # User Story 7: Created a passing test for deducting money from touch out
     it 'deducts £1 for every journey' do
       subject.top_up(20)
       subject.touch_in
