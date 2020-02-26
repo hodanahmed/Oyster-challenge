@@ -21,13 +21,13 @@ describe Oystercard do
       subject.top_up maximum_balance
       expect{ subject.top_up 1 }.to raise_error("Maximum balance of #{maximum_balance} exceeded")
     end
-  describe '#deduct' do
+  #describe '#deduct' do
   #Created passing rspec test for User Story 4: Ability to deduct money from card balance.
-    it 'deducts an amount from the balance' do
-        subject.top_up(20)
-        expect{ subject.deduct 2}.to change{ subject.balance }.by -2
-    end
-  end
+    #it 'deducts an amount from the balance' do
+    #    subject.top_up(20)
+    #    expect{ subject.deduct 2}.to change{ subject.balance }.by -2
+  #  end
+#  end
 
   describe '#touch_in' do
   #Created a passing test for User Story 5: In order to get through the barriers. I need to touch in.
@@ -54,6 +54,13 @@ describe Oystercard do
       subject.touch_out
       expect(subject.in_journey?).to eq(false)
     end
+    # created a failing test for deducting money from touch out
+    it 'deducts £1 for every journey' do
+      subject.top_up(20)
+      subject.touch_in
+      expect{ subject.touch_out}.to change{ subject.balance }.by -1
+    end
+
     it 'can see if user is on a journey' do
       expect(subject).to respond_to(:in_journey)
     end
