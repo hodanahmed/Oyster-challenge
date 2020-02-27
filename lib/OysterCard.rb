@@ -1,7 +1,7 @@
 class Oystercard
 
   #We can access the balance by calling subject.balance
-  attr_accessor :balance, :in_journey, :maximum_balance, :MINIMUM_FARE
+  attr_accessor :balance, :in_journey, :maximum_balance, :MINIMUM_FARE, :entry_station
   MAXIMUM_BALANCE = 90
   MINIMUM_BALANCE = 1
   MINIMUM_FARE = 1
@@ -23,6 +23,7 @@ class Oystercard
   def touch_in(station)
     raise 'You need to top up your oyster!' if minimum
     @in_journey = true
+    @entry_station = station
     return "You are currently in #{station}"
   end
 

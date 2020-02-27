@@ -28,14 +28,12 @@ describe Oystercard do
     #    expect{ subject.deduct 2}.to change{ subject.balance }.by -2
   #  end
 #  end
-
   describe '#touch_in' do
     let (:oyster) {Oystercard.new(50)}
-    let(:station) {Station.new}
   #Created a passing test for User Story 5: In order to get through the barriers. I need to touch in.
     it 'can touch in' do
       subject = Oystercard.new(10)
-      subject.touch_in(:station)
+      subject.touch_in("x")
       expect(subject.in_journey?).to eq(true)
     end
     it 'initially should not be in journey' do
@@ -48,22 +46,22 @@ describe Oystercard do
     end
 #Created failing test for User story 8: I need to know where I've travelled from. (entry station)
     it 'has an entry station' do
-      oyster.touch_in(:station)
-      expect(oyster.touch_in(:station)).to eq("You are currently in #{station}")
+      oyster.touch_in("Holloway")
+      expect(oyster.entry_station).to eq("Holloway")
     end
   end
   describe '#touch_out' do
   #Created a passing test for User Story 6: In order to get through the barriers. I need to touch out.
     it 'can touch out' do
       subject = Oystercard.new(10)
-      subject.touch_in(:station)
+      subject.touch_in("x")
       subject.touch_out
       expect(subject.in_journey?).to eq(false)
     end
     # User Story 7: Created a passing test for deducting money from touch out
     it 'deducts £1 for every journey' do
       subject.top_up(20)
-      subject.touch_in(:station)
+      subject.touch_in("x")
       expect{ subject.touch_out}.to change{ subject.balance }.by -1
     end
 
