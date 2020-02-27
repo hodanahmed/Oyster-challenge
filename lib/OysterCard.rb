@@ -34,7 +34,9 @@ class Oystercard
   end
 
   def in_journey?
-    @in_journey
+    #Double bang !! returns the opposite boolean value of the operand. ! = false ! = true.
+    #It will turn the value into a boolean
+    !!entry_station
   end
 
   private
