@@ -27,9 +27,10 @@ class Oystercard
     return "You are currently in #{station}"
   end
 
-  def touch_out
+  def touch_out(station)
     @in_journey = false
     deduct
+    @entry_station = nil
   end
 
   def in_journey?

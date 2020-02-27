@@ -56,19 +56,19 @@ describe Oystercard do
     it 'can touch out' do
       subject = Oystercard.new(10)
       subject.touch_in("x")
-      subject.touch_out
+      subject.touch_out("x")
       expect(subject.in_journey?).to eq(false)
     end
     # User Story 7: Created a passing test for deducting money from touch out
     it 'deducts £1 for every journey' do
       subject.top_up(20)
       subject.touch_in("x")
-      expect{ subject.touch_out}.to change{ subject.balance }.by -1
+      expect{ subject.touch_out("x")}.to change{ subject.balance }.by -1
     end
 #User Story 8: Entry station returns to nil
     it 'can return entry station to nil' do
       oyster.touch_out("x")
-      expect(oyster.entry_station).to change(nil)
+      expect(oyster.entry_station).to be_nil
     end
 
     it 'can see if user is on a journey' do
