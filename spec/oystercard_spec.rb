@@ -30,6 +30,7 @@ describe Oystercard do
 #  end
 
   describe '#touch_in' do
+    let(:station) {Station.new}
   #Created a passing test for User Story 5: In order to get through the barriers. I need to touch in.
     it 'can touch in' do
       subject = Oystercard.new(10)
@@ -44,8 +45,12 @@ describe Oystercard do
       oyster = Oystercard.new(0.2)
       expect{ oyster.touch_in }.to raise_error 'You need to top up your oyster!'
     end
+#Created failing test for User story 8: I need to know where I've travelled from. (entry station)
+    it 'has an entry station' do
+      subject.touch_in(:station)
+      expect(subject.touch_in(:station)).to eq(:station)
+    end
   end
-
   describe '#touch_out' do
   #Created a passing test for User Story 6: In order to get through the barriers. I need to touch out.
     it 'can touch out' do
