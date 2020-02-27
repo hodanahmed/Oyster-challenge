@@ -51,6 +51,7 @@ describe Oystercard do
     end
   end
   describe '#touch_out' do
+    let (:oyster) {Oystercard.new(50)}
   #Created a passing test for User Story 6: In order to get through the barriers. I need to touch out.
     it 'can touch out' do
       subject = Oystercard.new(10)
@@ -63,6 +64,11 @@ describe Oystercard do
       subject.top_up(20)
       subject.touch_in("x")
       expect{ subject.touch_out}.to change{ subject.balance }.by -1
+    end
+#User Story 8: Entry station returns to nil
+    it 'can return entry station to nil' do
+      oyster.touch_out("x")
+      expect(oyster.entry_station).to change(nil)
     end
 
     it 'can see if user is on a journey' do
