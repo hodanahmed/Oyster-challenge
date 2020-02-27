@@ -20,9 +20,10 @@ class Oystercard
     return
   end
 
-  def touch_in
+  def touch_in(station)
     raise 'You need to top up your oyster!' if minimum
     @in_journey = true
+    return "You are currently in #{station}"
   end
 
   def touch_out
