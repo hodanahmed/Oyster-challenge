@@ -53,7 +53,7 @@ describe Oystercard do
   describe '#touch_out' do
     let (:oyster) {Oystercard.new(50)}
   #Created a passing test for User Story 6: In order to get through the barriers. I need to touch out.
-    it 'can touch out' do
+    xit 'can touch out' do
       subject = Oystercard.new(10)
       subject.touch_in("x")
       subject.touch_out("x")
